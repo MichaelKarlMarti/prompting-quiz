@@ -5,101 +5,164 @@
   <title>Quiz: Einführung ins Prompten</title>
   <style>
     body {
-      font-family: sans-serif;
+      font-family: "Segoe UI", sans-serif;
       max-width: 800px;
       margin: auto;
       padding: 20px;
+      background: linear-gradient(to right, #f0f4ff, #e6f7ff);
+      color: #333;
+    }
+    h1 {
+      color: #004080;
     }
     .question {
+      display: none;
+      background: #ffffff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
       margin-bottom: 20px;
     }
+    .question.active {
+      display: block;
+    }
     .question h3 {
-      margin-bottom: 10px;
+      color: #003366;
+    }
+    label {
+      display: block;
+      margin-bottom: 8px;
+      padding: 6px 10px;
+      background: #f2f2f2;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    label:hover {
+      background: #e0f0ff;
+    }
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+    .navigation {
+      margin-top: 20px;
+      text-align: center;
+    }
+    .navigation button {
+      margin: 10px;
+      padding: 10px 20px;
+      background-color: #007acc;
+      border: none;
+      color: white;
+      font-weight: bold;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .navigation button:hover {
+      background-color: #005c99;
     }
     .result {
       margin-top: 30px;
       font-weight: bold;
+      font-size: 1.2em;
+      background-color: #e6ffe6;
+      padding: 15px;
+      border-radius: 8px;
+      border: 1px solid #99cc99;
+      display: none;
     }
   </style>
 </head>
 <body>
-  <h1>Quiz: Einführung ins Prompten mit ChatGPT</h1>
+  <h1>🎯 Quiz: Einführung ins Prompten mit ChatGPT</h1>
   <form id="quizForm">
-    <div class="question">
+    <div class="question active">
       <h3>1. Was versteht man unter einem "Prompt"?</h3>
-      <label><input type="radio" name="q1" value="0"> Eine Datenbank-Abfrage</label><br>
-      <label><input type="radio" name="q1" value="1"> Eine Eingabeanweisung an ein KI-Modell</label><br>
+      <label><input type="radio" name="q1" value="0"> Eine Datenbank-Abfrage</label>
+      <label><input type="radio" name="q1" value="2"> Eine Eingabeanweisung an ein KI-Modell</label>
       <label><input type="radio" name="q1" value="0"> Ein Programmierbefehl</label>
     </div>
-
     <div class="question">
       <h3>2. Was ist ein wesentliches Ziel beim Prompten?</h3>
-      <label><input type="radio" name="q2" value="1"> Möglichst klare und spezifische Anweisungen geben</label><br>
-      <label><input type="radio" name="q2" value="0"> Viele verschiedene Modelle gleichzeitig testen</label><br>
+      <label><input type="radio" name="q2" value="2"> Möglichst klare und spezifische Anweisungen geben</label>
+      <label><input type="radio" name="q2" value="0"> Viele verschiedene Modelle gleichzeitig testen</label>
       <label><input type="radio" name="q2" value="0"> Das Training eines Modells verändern</label>
     </div>
-
     <div class="question">
       <h3>3. Welche Aussage beschreibt generative KI korrekt?</h3>
-      <label><input type="radio" name="q3" value="0"> Sie filtert irrelevante Informationen aus</label><br>
-      <label><input type="radio" name="q3" value="1"> Sie erzeugt neue Inhalte wie Texte oder Bilder</label><br>
+      <label><input type="radio" name="q3" value="0"> Sie filtert irrelevante Informationen aus</label>
+      <label><input type="radio" name="q3" value="2"> Sie erzeugt neue Inhalte wie Texte oder Bilder</label>
       <label><input type="radio" name="q3" value="0"> Sie überwacht und bewertet menschliche Interaktion</label>
     </div>
-
     <div class="question">
       <h3>4. Welcher Prompting-Stil fordert das Modell auf, seine Antwort zu hinterfragen?</h3>
-      <label><input type="radio" name="q4" value="0"> Role Prompting</label><br>
-      <label><input type="radio" name="q4" value="1"> Self-reflection</label><br>
+      <label><input type="radio" name="q4" value="0"> Role Prompting</label>
+      <label><input type="radio" name="q4" value="2"> Self-reflection</label>
       <label><input type="radio" name="q4" value="0"> Chain-of-Action</label>
     </div>
-
     <div class="question">
       <h3>5. Was ist eine sogenannte "KI-Halluzination"?</h3>
-      <label><input type="radio" name="q5" value="0"> Ein technischer Defekt in neuronalen Netzen</label><br>
-      <label><input type="radio" name="q5" value="1"> Eine plausible, aber faktisch falsche Aussage</label><br>
+      <label><input type="radio" name="q5" value="0"> Ein technischer Defekt in neuronalen Netzen</label>
+      <label><input type="radio" name="q5" value="2"> Eine plausible, aber faktisch falsche Aussage</label>
       <label><input type="radio" name="q5" value="0"> Ein stilistisches Stilmittel der KI</label>
     </div>
-
     <div class="question">
       <h3>6. Was bedeutet eine "hohe Temperatur" beim Prompten?</h3>
-      <label><input type="radio" name="q6" value="1"> Die Antworten sind kreativer, aber weniger verlässlich</label><br>
-      <label><input type="radio" name="q6" value="0"> Das Modell arbeitet schneller</label><br>
+      <label><input type="radio" name="q6" value="2"> Die Antworten sind kreativer, aber weniger verlässlich</label>
+      <label><input type="radio" name="q6" value="0"> Das Modell arbeitet schneller</label>
       <label><input type="radio" name="q6" value="0"> Der Prompt wird mehrfach analysiert</label>
     </div>
-
     <div class="question">
       <h3>7. Welcher der folgenden Tipps gehört NICHT zur Prompt-Checkliste?</h3>
-      <label><input type="radio" name="q7" value="0"> Klare Struktur verwenden</label><br>
-      <label><input type="radio" name="q7" value="0"> Präzise Sprache einsetzen</label><br>
-      <label><input type="radio" name="q7" value="1"> Möglichst vage und offen bleiben</label>
+      <label><input type="radio" name="q7" value="0"> Klare Struktur verwenden</label>
+      <label><input type="radio" name="q7" value="0"> Präzise Sprache einsetzen</label>
+      <label><input type="radio" name="q7" value="2"> Möglichst vage und offen bleiben</label>
     </div>
-
     <div class="question">
       <h3>8. Warum ist das Setzen von Grenzen beim Prompten wichtig?</h3>
-      <label><input type="radio" name="q8" value="1"> Um ungewünschte Inhalte im Output zu vermeiden</label><br>
-      <label><input type="radio" name="q8" value="0"> Damit das Modell schneller arbeitet</label><br>
+      <label><input type="radio" name="q8" value="2"> Um ungewünschte Inhalte im Output zu vermeiden</label>
+      <label><input type="radio" name="q8" value="0"> Damit das Modell schneller arbeitet</label>
       <label><input type="radio" name="q8" value="0"> Um den Prompt automatisch zu speichern</label>
     </div>
-
     <div class="question">
       <h3>9. Welche Rolle spielen die Benutzereinstellungen bei ChatGPT?</h3>
-      <label><input type="radio" name="q9" value="1"> Sie beeinflussen Ton, Stil und Erwartungen an die KI</label><br>
-      <label><input type="radio" name="q9" value="0"> Sie dienen nur der technischen Sicherheit</label><br>
+      <label><input type="radio" name="q9" value="2"> Sie beeinflussen Ton, Stil und Erwartungen an die KI</label>
+      <label><input type="radio" name="q9" value="0"> Sie dienen nur der technischen Sicherheit</label>
       <label><input type="radio" name="q9" value="0"> Sie reduzieren die Kosten pro Anfrage</label>
     </div>
-
     <div class="question">
       <h3>10. Was ist beim Umgang mit rechtlichen Aspekten der KI-Nutzung besonders wichtig?</h3>
-      <label><input type="radio" name="q10" value="1"> Keine sensiblen Daten in Prompts eingeben</label><br>
-      <label><input type="radio" name="q10" value="0"> Prompts möglichst kreativ formulieren</label><br>
+      <label><input type="radio" name="q10" value="2"> Keine sensiblen Daten in Prompts eingeben</label>
+      <label><input type="radio" name="q10" value="0"> Prompts möglichst kreativ formulieren</label>
       <label><input type="radio" name="q10" value="0"> Das Modell vorher offline speichern</label>
     </div>
-
-    <button type="button" onclick="evaluateQuiz()">Quiz auswerten</button>
-    <div class="result" id="result"></div>
+    <div class="navigation">
+      <button type="button" onclick="navigate(-1)">⬅️ Zurück</button>
+      <button type="button" onclick="navigate(1)">Weiter ➡️</button>
+      <button type="button" onclick="evaluateQuiz()">🧠 Auswerten</button>
+    </div>
   </form>
+  <div class="result" id="result"></div>
 
   <script>
+    let current = 0;
+    const questions = document.querySelectorAll('.question');
+    const buttons = document.querySelectorAll('.navigation button');
+    const resultDiv = document.getElementById('result');
+
+    function showQuestion(index) {
+      questions.forEach((q, i) => q.classList.toggle('active', i === index));
+      buttons[0].disabled = index === 0;
+      buttons[1].disabled = index === questions.length - 1;
+      buttons[2].style.display = index === questions.length - 1 ? 'inline-block' : 'none';
+    }
+
+    function navigate(offset) {
+      current += offset;
+      if (current < 0) current = 0;
+      if (current >= questions.length) current = questions.length - 1;
+      showQuestion(current);
+    }
+
     function evaluateQuiz() {
       const form = document.getElementById('quizForm');
       const formData = new FormData(form);
@@ -108,15 +171,18 @@
         score += parseInt(value);
       }
       let message = '';
-      if (score <= 4) {
-        message = 'Ergebnis: Anfänger – du stehst noch am Anfang. Übe weiter!';
-      } else if (score <= 7) {
-        message = 'Ergebnis: Fortgeschritten – gute Grundlagen, aber da geht noch was!';
+      if (score <= 6) {
+        message = '🟡 Ergebnis: Anfänger – du stehst noch am Anfang. Übe weiter!';
+      } else if (score <= 13) {
+        message = '🟠 Ergebnis: Fortgeschritten – gute Grundlagen, aber da geht noch was!';
       } else {
-        message = 'Ergebnis: Prompt-Profi – stark! Du beherrschst das Spiel mit der KI.';
+        message = '🟢 Ergebnis: Prompt-Profi – stark! Du beherrschst das Spiel mit der KI.';
       }
-      document.getElementById('result').innerText = `Du hast ${score} von 20 Punkten erzielt.\n${message}`;
+      resultDiv.innerText = `Du hast ${score} von 20 Punkten erzielt.\n${message}`;
+      resultDiv.style.display = 'block';
     }
+
+    showQuestion(current);
   </script>
 </body>
 </html>
